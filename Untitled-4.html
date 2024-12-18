@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мое портфолио</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #a8dadc;
+      padding: 30px 0;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .navbar .logo {
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .navbar nav ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .navbar nav ul li {
+      margin: 0 20px;
+    }
+
+    .navbar nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .navbar nav ul li a:hover {
+      color: #ffb3b3;
+    }
+
+    .section {
+      padding: 100px 20px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #about {
+      background-color: #f7f7f7;
+    }
+
+    #projects {
+      background-color: #f0e5d8;
+    }
+
+    #services {
+      background-color: #eaeaea;
+    }
+
+    #testimonials {
+      background-color: #f4f1f1;
+    }
+
+    #contact {
+      background-color: #d8e2dc;
+    }
+
+    h1 {
+      font-size: 45px;
+      margin-bottom: 30px;
+      color: #2b2d42;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    .projects-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background-color: #fff;
+      border-radius: 12px;
+      width: 320px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .project-card h3 {
+      margin-top: 15px;
+      font-size: 24px;
+      color: #2b2d42;
+    }
+
+    .project-card p {
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #ffb3b3;
+      color: white;
+      font-size: 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #ff7f7f;
+    }
+
+    footer {
+      background-color: #2b2d42;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      position: relative;
+    }
+
+    footer p {
+      font-size: 16px;
+    }
+
+    .services-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      color: #2b2d42;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .testimonial .author {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2b2d42;
+      margin-top: 10px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .projects-container,
+      .services-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .project-card,
+      .service-card {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .navbar nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar nav ul li {
+        margin: 10px 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">Мое портфолио</div>
+      <nav>
+        <ul>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#testimonials">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about" class="section fade-in-up">
+    <h1>Обо мне</h1>
+    <p>Привет! Я Сабина, веб-разработчик, который создает красивые, удобные и функциональные сайты. В своей работе я использую современные технологии и всегда стремлюсь к совершенству. Я горжусь каждым проектом и готов помочь вам в реализации вашей идеи.</p>
+    <a href="#projects" class="btn">Посмотреть проекты</a>
+  </section>
+
+  <section id="projects" class="section fade-in-up">
+    <h1>Мои проекты</h1>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="https://www.nwstudio.pro/wp-content/uploads/2016/07/contacts-1.jpg" alt="https://www.nwstudio.pro/wp-content/uploads/2016/07/contacts-1.jpg">
+        <h3>Проект 1</h3>
+        <p>Сайт для малого бизнеса с адаптивным дизайном и интеграцией с социальными сетями.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://zefirka.club/wallpapers/uploads/posts/2023-04/thumbs/1680368496_zefirka-club-p-prezentatsiya-portfolio-dizainera-84.jpg" alt="Проект 2">
+        <h3>Проект 2</h3>
+        <p>Портфолио для дизайнера, с красивым анимационным интерфейсом и галереей работ.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://img.okezone.com/content/2021/08/13/278/2455126/rayakan-bulan-kemerdekaan-ri-kartu-kredit-mnc-bank-babp-tebar-diskon-besar-besaran-U1LqRKhKi8.jpg" alt="Проект 3">
+        <h3>Проект 3</h3>
+        <p>Интернет-магазин с системой управления товарами и онлайн-оплатой.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section fade-in-up">
+    <h1>Мои Услуги</h1>
+    <div class="services-container">
+      <div class="service-card">
+        <h3>Веб-разработка</h3>
+        <p>Я занимаюсь созданием адаптивных и удобных сайтов под ключ. От личных блогов до крупных корпоративных проектов.</p>
+      </div>
+      <div class="service-card">
+        <h3>SEO-оптимизация</h3>
+        <p>Помогаю улучшить видимость вашего сайта в поисковых системах с помощью лучших практик SEO.</p>
+      </div>
+      <div class="service-card">
+        <h3>Поддержка сайтов</h3>
+        <p>Предлагаю регулярную поддержку и обновления вашего сайта для обеспечения его стабильной работы.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section fade-in-up">
+    <h1>Отзывы</h1>
+    <div class="testimonial">
+      <p>"Этот разработчик помог нам создать сайт, который идеально соответствует нашим требованиям. Мы очень довольны результатом!"</p>
+      <div class="author">Иван Петров, владелец бизнеса</div>
+    </div>
+    <div class="testimonial">
+      <p>"Отличный специалист, который сделал наш проект вовремя и с высоким качеством. Рекомендую!"</p>
+      <div class="author">Мария Сидорова, дизайнер</div>
+    </div>
+  </section>
+
+  <section id="contact" class="section fade-in-up">
+    <h1>Контакты</h1>
+    <p>Я всегда рада новым проектам и готова к сотрудничеству. Свяжитесь со мной, и я помогу вам реализовать ваши идеи!</p>
+    <div class="contact-info">
+      <p>Email: example@example.com</p>
+      <p>Телефон: +7 123 456 7890</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Мое портфолио</p>
+  </footer>
+
+</body>
+</html>
